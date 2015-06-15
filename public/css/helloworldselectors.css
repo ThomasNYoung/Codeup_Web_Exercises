@@ -1,0 +1,45 @@
+ 	  a:link {
+        color:purple;
+        }
+      a:visited { 
+        color:green;
+
+      }
+      a:hover {
+        color:blue;
+      }
+      a:active {
+        color:red;
+      }
+
+      .header {
+      	color:#00CED1;
+      	text-decoration:underline;
+      	font-family: sans-serif;
+
+
+
+      }
+
+      body {
+      	background-color:#00CED1; 
+      	background-image:url(/img/Wallpaper-024.jpg);
+      	color:lightgoldenrodyellow;
+      	font-family:"Courier New", Monospace;
+      	
+      
+
+
+
+      }
+
+     
+
+      ul{
+      	list-style-type:square;
+      	text-align:left;
+      }
+
+
+      
+    
