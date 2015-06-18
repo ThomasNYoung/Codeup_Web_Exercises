@@ -1,0 +1,23 @@
+<!DOCTYPE html>	
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+	"use strict";
+	// todo:
+// Create an array of 4 names using literal array notation, in a variable called 'names'.
+	var names = ['bill','john','wyatt','harlen'];
+
+	for (var i = 0; i < names.length; i++) {
+		console.log( 'the name at index ' + i + ' is ' + names[i]);
+	}
+
+	names.forEach(function(element, index, array){
+	console.log('the name at index ' + index + ' is ' + element);
+	});
+	</script>
+
+</body>
+</html>

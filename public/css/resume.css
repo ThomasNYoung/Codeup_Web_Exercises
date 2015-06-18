@@ -1,3 +1,8 @@
 .obj{
-	padding-bottom: :50px;
+	padding-top:50px;
+}
+.edu{
+	font-size: 15px;
+	padding-top: 25px;
+	font-weight: bold;
 }
