@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+	var shapes = [{
+		type : "rectangle",
+		top:5,
+		bottom: 3,
+		left: 2,
+		right: 15,
+		getArea: function() {
+			return (this.right - this.left) * (this.top - this.bottom);
+		},
+		getPerimeter: function() {
+			return 2 * ((this.right - this.left) + (this.top - this.bottom));
+		
+	
+		
+	},
+	}];
+	shapes.forEach(function(shape){
+		console.log("area: " + shape.getArea());
+		console.log("perimeter: " + shape.getPerimeter());
+	});
+	</script>
+
+</body>
+</html>
+
+

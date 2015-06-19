@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+"use strict";
+
+(function(){
+	var cookie = new Object();
+
+	console.log(cookie);
+
+	cookie.type = "Snickerdoodle";
+
+	console.log(cookie);
+
+	cookie.bakingtemp = 350
+	cookie.bakingtime = 40
+
+	console.log(cookie);
+
+	cookie.ingredients = [
+		'sugar',
+		'flour',
+		'water'
+		]
+	console.log(cookie);
+
+	cookie.bake = function() {
+		console.log("baking cookies");
+		for (var i = 0; i < 40; i++) {
+			console.log(40 - i + "minutes remaining")
+		}
+		console.log("cookies done")
+	};
+	cookie.bake();
+
+
+})();
+</script>
+</body>
+</html>
