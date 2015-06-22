@@ -6,7 +6,7 @@
 <body>
 <script type="text/javascript">
 // create a circle object
-
+"use strict";
 var circle = {
     radius: 3,
     getArea: function () {
@@ -19,7 +19,7 @@ var circle = {
     },
     logInfo: function (round) {
         var area = circle.getArea();
-        if( round === true) {
+        if( round) {
             area = Math.round(area);
         }
         

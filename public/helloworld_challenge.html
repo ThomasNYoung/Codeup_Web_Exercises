@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+
+
+        function helloWorld(myVar)
+        {
+            if (typeof(myVar) != 'number' && typeof(myVar) != 'undefined' && typeof(myVar) != 'object'
+                 && typeof(myVar) != 'boolean' && !myVar.constructor.toString().indexOf("Array")> -1)
+            {
+                if (myVar == '' || myVar == ' ')
+                {
+                    alert("Hello, World!");
+                }
+                else
+                {
+                    alert( "Hello, CodeUp!");
+                }    
+            }
+            else
+            {
+                alert( "That's not a a valid input");
+            }
+            console.log
+
+        }
+    </script>
+</script>
+</body>
+</html>
