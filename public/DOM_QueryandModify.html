@@ -33,79 +33,54 @@
 
     <script>
         "use strict";
+        
         (function() {
-            // TODO: Uncomment next line and get the main header element by id
-             var mainHeader = document.getElementById('main-header');
+            
+            var mainHeader = document.getElementById('main-header');
 
-            // TODO: Set inner html of mainHeader to "JavaScript is Cool"
-           
-            console.log(mainHeader.innerHTML);
-            // TODO: Uncomment the next line and get the sub header element by id
-             var subHeader = document.getElementById('sub-header');
+                console.log(mainHeader.innerHTML);
+            
+            var subHeader = document.getElementById('sub-header');
              
-            
-
-
-            // TODO: Set the text color of subHeader to blue
-            
-
-            // TODO: Uncomment the next line and get all list items
             var listItems = document.getElementsByTagName('li'); 
-
-
-            // TODO: Set text color on every other list item to grey
-            //listItems[0].style.color = '#808080'
-            //listItems[2].style.color = '#808080'
-            //listItems[4].style.color = '#808080'
-            
-            
 
             var listener1 = function (event) {
                 mainHeader.innerHTML = "javascript is cool" ;
-            
-            };
+                
+            }
 
-             var listener2 = function (event) {
+            var listener2 = function (event) {
                 subHeader.innerHTML = "javascript boogie" ;
             
-            };
+            }
 
-             var listener4= function (event) {
+            var listener4 = function (event) {
                 var subParagraphs = document.getElementsByClassName ('sub-paragraph') ;   
-            subParagraphs[0].innerHTML = 'mission Accomplished';
+                subParagraphs[0].innerHTML = 'mission Accomplished';
             
-            };
+            }
 
-             var listener3 = function (event) {
+            var listener3 = function (event) {
                for (var i =0; i < listItems.length; i++) 
                if(i % 2 === 0) 
                 listItems[i].style.color ='#0000ff';
             
-             }; 
+            } 
 
-             var listener5 = function(event) {
+            var listener5 = function(event) {
                 subHeader.style.color = '#0000ff' ;
-            };
+            }
          
+            document.getElementById('btn1').addEventListener('click', listener1, false);
 
+            document.getElementById('btn2').addEventListener('click', listener2, false);  
 
+            document.getElementById('btn3').addEventListener('click', listener3, false);
 
-        // register the listener to handle clicks on btn1
-        document.getElementById('btn1').addEventListener('click', listener1, false);
+            document.getElementById('btn4').addEventListener('click', listener4, false);  
 
-        document.getElementById('btn2').addEventListener('click', listener2, false);  
-
-        document.getElementById('btn3').addEventListener('click', listener3, false);
-
-        document.getElementById('btn4').addEventListener('click', listener4, false);  
-
-        document.getElementById('btn5').addEventListener('click', listener5, false);
-            // TODO: Set text color of li with dbid = 1 to blue
-
-            // TODO: Uncomment the next line and get all elements with class name sub-paragraph
+            document.getElementById('btn5').addEventListener('click', listener5, false);
             
-
-            // TODO: Change the text in the first sub paragraph to "Mission Accomplished!"
         })();
     </script>
 </body>

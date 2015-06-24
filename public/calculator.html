@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calculator</title>
+	<meta charset="utf-8">
+	<!--link rel="stylesheet" href="/css/bootstrap.css"-->
+
+</head>
+<body style = "padding-top: 50px; padding-left: 500px;">
+	<!--div class = "container"-->
+		<div>
+			<input id="firstNumber"  type="text" readonly style = "width: 30px">
+			<input id="instruct"  type="text" readonly style = "width: 15px">
+			<input id="secondNumber"  type="text" readonly style = "width: 30px">
+		</div> 
+
+
+		<div>
+			 <button value = "1" class = " number" id="b1">1</button>
+			 <button value = "2" class = " number" id="b2">2</button>
+			 <button value = "3" class = " number" id="b3">3</button>
+			 <button value = "+" class = " operator" id="bPlus">+</button>
+			 <br>
+			 <button value = "4" class = " number" id="b4">4</button>
+			 <button value = "5" class = " number" id="b5">5</button>
+			 <button value = "6" class = " number" id="b6">6</button>
+			 <button value = "-" class = " operator" id="bMinus">-</button>
+			 <br>
+			 <button value = "7" class = " number" id="b7">7</button>
+			 <button value = "8" class = " number" id="b8">8</button>
+			 <button value = "9" class = " number" id="b9">9</button>
+			 <button value = "*" class = " operator" id="bMultiply">*</button>
+			 <br>
+			 <button value = "C" class = " special" id="clear">C</button>
+			 <button value = "0" class = " number" id="b0">0</button>
+			 <button value = "=" class = " special" id="bEquals">=</button>
+			 <button value = "/" class = " operator" id="bDivide">/</button>
+		</div>
+		<script type="text/javascript">
+		"use strict";
+			
+			var firstTextBox = document.getElementById('firstNumber');
+            var secondTextBox = document.getElementById('secondNumber');
+            var doIts = document.getElementById('instruct');
+
+
+            
+            var number = document.getElementsByClassName('number');	
+			for (var i =0; i < number.length; i++) {
+				number[i].addEventListener('click', numberClick, false);
+			}
+
+			function numberClick (){
+				if(document.getElementById('instruct').value == "") {
+					firstTextBox.value += this.innerHTML;
+				} else {
+					secondTextBox.value += this.innerHTML
+				}
+			}
+
+
+			var operator = document.getElementsByClassName('operator');
+
+			for (var i = 0; i < operator.length; i++){
+				operator[i].addEventListener('click', operatorClick, false);
+			}
+			function operatorClick(){
+				
+					doIts.value = this.innerHTML;
+				
+			}
+            
+            //var clear = document.getElementById('Clear');
+            
+            clear.addEventListener('click', clearClick, false);
+			
+			function clearClick(){
+				firstTextBox.value = "";
+				secondTextBox.value = "";
+				doIts.value = "";
+				}
+			
+        	document.getElementById('bEquals').addEventListener('click',equalClick);
+        	
+        	
+        	function equalClick(){
+        		var inputOne = document.getElementById('firstNumber').value;
+        		var inputTwo = document.getElementById('secondNumber').value;
+        		var plus = (parseInt(inputOne) + parseInt(inputTwo));
+        		var minus = (parseInt(inputOne) - parseInt(inputTwo));
+        		var multiply = (parseInt(inputOne) * parseInt(inputTwo));
+        		var	divide = (parseInt(inputOne) / parseInt(inputTwo));
+
+        		console.log(document.getElementById('instruct').value);
+        		
+        		switch(document.getElementById('instruct').value){
+					case '+':
+						document.getElementById('firstNumber').value = plus;
+						document.getElementById('secondNumber').value = "";
+						break;
+
+					case '-':
+						document.getElementById('firstNumber').value = minus;
+						document.getElementById('secondNumber').value = "";
+						break;
+					case '*':
+						document.getElementById('firstNumber').value = multiply;
+						document.getElementById('secondNumber').value = "";
+						break;
+					case '/' :
+						document.getElementById('firstNumber').value = divide;
+						document.getElementById('secondNumber').value = "";
+						break;
+					default:
+						clearClick();
+					}
+        		}
+
+		</script>
+		</div>
+	<!--/div-->
+</body>
+</html>
