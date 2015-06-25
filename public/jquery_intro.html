@@ -4,7 +4,7 @@
 	<title>jQuery</title>
 </head>
 <body>
-	<h1 class = "head	" id "funtime"= >jQuery</h1>
+	<h1 class = "" id "funtime"= >jQuery</h1>
 	<h2 class = "head" id = "bud">Boogie time woop woop</h2>
 		<p id = "go">Get up and jam!</p>
 		<h3 class = "head" id = "funk">My instruments</h3>
@@ -18,17 +18,34 @@
 	</div>
 <script src="/js/jquery.js"></script>
 	<script>
+	
+
 	$(document).ready(function(){
 		alert(' it be ready ');
+
+		
+		
 	});
 
 	$(document).ready(function() {
     var contents = $('#sw');
     alert(contents.html());
     console.log(contents.html());
-});
+	
+    	
+    });
+	
 
+	
 
+	$(document).ready(function(){
+		$('.head').css({
+			"border": " 3px solid red",
+			"background-color": "blue"
+		});
+	});
+
+	$('p').text('happy texting')
 
 
 	</script>
