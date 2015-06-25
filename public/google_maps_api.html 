@@ -17,7 +17,6 @@
 
   <!-- Script to show address on map -->
   <script type="text/javascript">
-    "use strict";
     // Set our map options
     //var mapOptions = {
       // Set the zoom level
@@ -37,15 +36,15 @@ var address = '100 S Main St, Cibolo, TX 78108';
 
 // Init geocoder object
 var geocoder = new google.maps.Geocoder();
-var mapOptions;
+
 // Geocode our address
-geocoder.geocode( { 'address': address}, function(results, status)  {
+geocoder.geocode( { 'address': address}, function(results, status) {
   // Check for a successful result
   if (status == google.maps.GeocoderStatus.OK) {
     // Set our map options
-    mapOptions = {
+    var mapOptions = {
       // Set the zoom level
-      zoom: 15,
+      zoom: 18,
       // This sets the center of the map at our location
       center: results[0].geometry.location
     }
@@ -55,23 +54,7 @@ geocoder.geocode( { 'address': address}, function(results, status)  {
     // Show an error message with the status if our request fails
     alert("Geocoding was not successful - STATUS: " + status);
   }
-  var bbq = results[0].geometry.location;
-   console.log(bbq)
-  var marker = new google.maps.Marker({
-     position: bbq,
-      map: map
-  });
-
-  var infowindow = new google.maps.InfoWindow({
-    content: 'Harmon\'s Barbecue'
-
-  });
-
-  infowindow.open(map,marker);
-
 });
-
-  
   </script>
 </body>
 </html>
