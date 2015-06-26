@@ -4,17 +4,23 @@
 	<title>jQuery</title>
 </head>
 <body>
-	<h1 class = "" id "funtime"= >jQuery</h1>
-	<h2 class = "head" id = "bud">Boogie time woop woop</h2>
+	<h1 class = "head" id = "funtime" >jQuery</h1>
+	<h2 class = "head" id = "bud">Boogie time</h2>
 		<p id = "go">Get up and jam!</p>
 		<h3 class = "head" id = "funk">My instruments</h3>
+		
 		<ul> 
-			<li id = "electric">gibson lp</li>
-			<li id = "acoustic">gibson hummingbird</li>
-			<li id = "vintage">gibson j-50</li>
+			<li id = "electric">Gibson Les Paul</li>
+			<li id = "acoustic">Gibson Hummingbird</li>
+			<li id = "vintage">Gibson J-50</li>
 		</ul>
 	<div>
-		<p id = "sw">Boogie on Reggae woman</p>
+		<p id = "sw">Boogie on</p>
+	</div>
+	<div>
+		<p>Bacon ipsum dolor amet venison fatback pork belly brisket picanha short ribs. Meatball swine rump kevin pork chop capicola chicken. Cow boudin venison, drumstick flank cupim capicola shankle rump biltong tri-tip ball tip turkey leberkas. T-bone alcatra biltong, pork pig strip steak jowl ribeye short loin landjaeger venison cow shank prosciutto. Landjaeger hamburger strip steak frankfurter doner shoulder biltong chuck. Ribeye rump short loin cupim, chicken biltong jerky alcatra turducken sausage pork chop corned beef.
+
+		</p>
 	</div>
 <script src="/js/jquery.js"></script>
 	<script>
@@ -23,31 +29,45 @@
 	$(document).ready(function(){
 		alert(' it be ready ');
 
-		
-		
+	$('#go').dblclick(function(){
+		alert('alerts are cool');
 	});
-
-	$(document).ready(function() {
-    var contents = $('#sw');
+		
+	var contents = $('#sw');
     alert(contents.html());
     console.log(contents.html());
 	
-    	
-    });
-	
+   $('#funtime').click(function(){
+   		$(this).css({
+   			'background-color': 'lavender'
+   		});
+   	
+   });
 
-	
+   $('p').dblclick(function(){
+   		$(this).css({
+   			'font-size':'18px'
+   		});
+   });
 
-	$(document).ready(function(){
-		$('.head').css({
-			"border": " 3px solid red",
-			"background-color": "blue"
+   $('li').hover(function(){
+   		$(this).css({
+   			'background-color': 'purple',
+   			'color':'gold'
+   		});
+   	}, function(){
+		$(this).css({
+			'background-color':'white',
+			'color':'green'
 		});
+   });
+	
+    var contents = $('#funtime');
+    alert(contents.html());
+    console.log(contents.html());
+	
+
 	});
-
-	$('p').text('happy texting')
-
-
 	</script>
 </body>
 </html>

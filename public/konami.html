@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>submit demo</title>
+  <style>
+  p {
+    margin: 0;
+    color: blue;
+  }
+  div,p {
+    margin-left: 10px;
+  }
+  span {
+    color: red;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+	<p>enter the konami code.</p>
+	<form>
+ 	<div>
+    	<input type="text" autofocus>
+    	<input type="submit">
+  	</div>
+	</form>
+	<span></span>
+ 
+	<script>
+		
+		"use strict";
+
+        $(document).keyup(function(event){
+            console.log(event.keyCode);
+        
+
+		var keyCode =  '38,  38,  40,  40,  39, 37, 39, 37, 65, 66';
+
+		$( "form" ).submit(function( event ) {
+	  	if ( $( "input:first" ).val() === 'keyCode' ) {
+    	$( "span" ).text( "Validated..." ).show();
+    	return;
+ 	 	}
+ 	 		console.log(keyCode)
+ 
+ 	 	$( "span" ).text( "Not valid!" ).show().fadeOut( 1000 );
+  		event.preventDefault();
+		});
+
+		});
+		</script>
+ 
+</body>
+</html>
+      	
+
+   
