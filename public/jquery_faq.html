@@ -6,6 +6,10 @@
 	.invisible{
 		display:none;
 	}
+
+	dt{
+		font-weight: bold
+	}
 	</style>
 </head>
 <body>
@@ -57,17 +61,22 @@
 			
 			$('dt').click(function() {
 	        
-	        $('dd').toggleClass('invisible');
+	        $('dd').slideToggle(1500);
 	    	});
 		$('ul').each(function(){
 			$(this).children().first().css({'font-weight': 'bold'
 		})})
 		
-		$('li').click(function() {
+		$('h3').click(function() {
 	        
-	        $(this).parent().addClass('invisible');
+	        $('li').slideToggle('slow');
 	    	});
 				console.log('li')
+
+			$('document').ready(function() {
+ 			$('li').css('background-color', '#129285');
+ 			$('li').parent().css('background-color', '#17bfaf');
+			});
 
 		});
 
