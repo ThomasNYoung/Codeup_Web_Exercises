@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script>
+	//template for ajax with weather API in get request
+	//this is my APPID in template
+	var ajaxRequest = $.get("http://api.openweathermap.org/data/2.5/weather", {
+    	APPID: "2359294c72e578d458ba6f6722ec8e2d",
+   		q:     "San Antonio, TX"
+	});
+	ajaxRequest.always(function(){
+		console.log('request sent');
+
+	});
+	ajaxRequest.fail(function(data, error){
+		console.log(error);
+		console.log(ajaxRequest.status);
+	});
+	ajaxRequest.done(function(data) {
+	    console.log(data);
+	});
+</script>
+</body>
+
+</html>

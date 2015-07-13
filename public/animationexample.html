@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Animate</title>
+    <style>
+        html, body {
+            margin: 0px;
+            padding: 0;
+        }
+
+        #btn-animate {
+            margin: 15px;
+        }
+
+        #lp{
+            opacity: 0;
+        }
+        #ls{
+            opacity: 0;
+        }
+       #lsb{
+            opacity: 0;
+       }
+
+    </style>
+</head>
+<body>
+     <img src="/img/lespaul.jpg" alt= "les paul" id="lp">
+     <img src="/img/lonestar.jpeg" alt="lone star" id="ls">
+     <img src="/img/lonestarbeer.jpeg" alt="lone star" id="lsb">
+    <p>
+        <button id="btn-guitar">Grab Yo Guitar!</button>
+
+        <button id="btn-amp">Grab Yo amp!</button>
+
+        <button id="btn-beer">Grab a beer</button>
+
+        <button id="btn-drink">Drink that beer</button>
+
+        <button id="btn-music">BOOGIE!</button>
+    </p>
+
+    <div id="animate-box" class="box"></div>
+
+    <script type="text/javascript" src="/js/jquery.js"></script>
+    <script>
+
+        "use script";
+
+
+            
+            $('#btn-guitar').click(function(){
+                $('#lp').animate({ opacity: 1 }, 1000)
+            });
+
+            $('#btn-amp').click(function(){
+                $('#ls').animate({ opacity: 1 }, 1000)
+            });
+            $('#btn-beer').click(function(){
+                $('#lsb').animate({ opacity: 1 }, 1000)
+            });
+            $('#btn-drink').click(function(){
+                $('#lsb').animate({opacity: 0}, 500)
+            });
+            $('')
+            
+            // todo: Make the box appear again with opacity
+            
+            // todo: Once all is done see if you can chain all the animations
+            // to happen with the `Animate all` button.
+            // Refresh to start over before hitting the button.
+            
+
+        });
+    //});
+           
+    </script>
+</body>
+</html>

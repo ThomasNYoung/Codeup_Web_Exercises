@@ -1,0 +1,13 @@
+.weatherBox {
+	text-align:center;
+	display:inline-block;
+
+}
+
+.location {
+	padding-top: 2px;
+}
+
+#addyBox {
+	width:350px;
+}

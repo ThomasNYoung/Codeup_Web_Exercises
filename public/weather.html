@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<link rel="stylesheet" href="/css/bootstrap.css">
+	<script src="/js/bootstrap.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/weather.css">
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAB_sh5iLleaw7pw_j6y99QXXCbRBOdIxY"></script>
+
+	<style type="text/css">
+  #map-canvas {
+    width: 650px;
+    height: 320px;
+  }
+  </style>
+
+	<title>weather box</title>
+</head>
+<body>
+
+
+	<div class="container">
+	<input  id='addyBox' class='location' name='address' placeholder='type address here' autofocus>
+	
+	<button class='location' id='submit' value='geocode'>submit</button>
+	<h1>weather</h1>
+		<div class='row'> 
+			<div class='col-md-3' id='dayOne' ></div>
+
+			<div class='col-md-3' id='dayTwo'></div>
+
+			<div class='col-md-3' id='dayThree'></div>
+		</div>
+		<div id="map-canvas"></div>
+
+  <!-- Load the Google Maps API [DON'T FORGET TO USE A KEY] -->
+  	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAB_sh5iLleaw7pw_j6y99QXXCbRBOdIxY"></script>
+
+  <!-- Script to show address on map -->
+ 	<script type="text/javascript">
+    "use strict";
+    
+    // Set our address to geocode
+	var address = 'san antonio, tx';
+
+	// Init geocoder object
+	var geocoder = new google.maps.Geocoder();
+	var mapOptions;
+	// Geocode our address
+	geocoder.geocode( { 'address': address}, function(results, status)  {
+	  // Check for a successful result
+	  if (status == google.maps.GeocoderStatus.OK) {
+	    // Set our map options
+	    mapOptions = {
+	      // Set the zoom level
+	      zoom: 15,
+	      // This sets the center of the map at our location
+	      center: results[0].geometry.location
+	    }
+	    // Render the map
+	    var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+	  } else {
+	    // Show an error message with the status if our request fails
+	    alert("Geocoding was not successful - STATUS: " + status);
+	  }
+	  
+
+	  var marker = new google.maps.Marker({
+		    map:map,
+		    draggable:true,
+		    animation: google.maps.Animation.DROP,
+		    position: results[0].geometry.location
+		});
+		google.maps.event.addListener(marker, 'dragend', function(event) 
+		{
+			var lat=this.getPosition().lat();
+			var long=this.getPosition().lng();
+			console.log(lat + "," + long);
+			var ajaxRequest = $.get("http://api.openweathermap.org/data/2.5/forecast/daily?lat=" + lat + "&lon=" + long + "&cnt=3", {
+    	APPID: "2359294c72e578d458ba6f6722ec8e2d",
+   		
+   		units: 'imperial'
+	});
+	ajaxRequest.always(function(){
+		console.log('request sent');
+
+	});
+	ajaxRequest.fail(function(data, error){
+		console.log(error);
+		console.log(ajaxRequest.status);
+	});
+	ajaxRequest.done(function(data) {
+	    //console.log(data)
+	    updateWeather(data);
+	    
+
+	});
+		    geocodePosition(marker.getPosition());
+		});
+
+		var infowindow = new google.maps.InfoWindow({
+	    content: 'Your forecast location'
+
+	  });
+
+
+	  infowindow.open(map,marker);
+
+		function geocodePosition(pos) 
+		{
+		   geocoder = new google.maps.Geocoder();
+		   geocoder.geocode
+		    ({
+		        latLng: pos
+		    }, 
+		        function(results, status) 
+		        {
+		            if (status == google.maps.GeocoderStatus.OK) 
+		            {
+		                $("#mapSearchInput").val(results[0].formatted_address);
+		                $("#mapErrorMsg").hide(100);
+		            } 
+		            else 
+		            {
+		                $("#mapErrorMsg").html('Cannot determine address at this location.'+status).show(100);
+		            }
+		        }
+		    );
+		}
+
+		  
+	});
+
+  
+  	</script>
+	</div>
+	<script>
+	"use strict";
+	var lat = 29.4241219
+	var long = -98.4936281
+	var ajaxRequest = $.get("http://api.openweathermap.org/data/2.5/forecast/daily?lat=" + lat + "&lon=" + long + "&cnt=3", {
+    	APPID: "2359294c72e578d458ba6f6722ec8e2d",
+   		
+   		units: 'imperial'
+	});
+	ajaxRequest.always(function(){
+		console.log('request sent');
+
+	});
+	ajaxRequest.fail(function(data, error){
+		console.log(error);
+		console.log(ajaxRequest.status);
+	});
+	ajaxRequest.done(function(data) {
+	    //console.log(data)
+	    console.log(data.name);
+	    console.log(data.temp);
+	    console.log(data.icon);
+	    console.log(data.humidity);
+	    console.log(data.conditions);
+	    console.log(data.wind)
+
+	});
+
+	function updateWeather(data){
+		console.log(data.city.name)
+			$("#dayOne, #dayTwo, #dayThree").html('');
+			
+
+			ajaxRequest.done(function(data){
+				$('#dayOne').append('<h3>' + data.city.name + '</h3>')
+				$('#dayOne').append('<h4>' + data.list[0].temp.max + "/" + data.list[0].temp.min + '</h4>'),
+				$('#dayOne').append('<img src="http://openweathermap.org/img/w/' + data.list[0].weather[0].icon + '.png">')
+				$('#dayOne').append('<p> conditions: ' + data.list[0].weather[0].description + '<p>')
+				$('#dayOne').append('<p> humidity: ' + data.list[0].humidity + '<p>')
+				$('#dayOne').append('<p> wind: ' + data.list[0].speed + '<p>')
+
+			    
+			});
+			ajaxRequest.done(function(data){
+				$('#dayTwo').append('<h3>' + data.city.name + '</h3>')
+				$('#dayTwo').append('<h4>' + data.list[1].temp.max + "/" + data.list[1].temp.min + '</h4>'),
+				$('#dayTwo').append('<img src="http://openweathermap.org/img/w/' + data.list[1].weather[0].icon + '.png">')
+				$('#dayTwo').append('<p> conditions: ' + data.list[1].weather[0].description + '<p>')
+				$('#dayTwo').append('<p> humidity: ' + data.list[1].humidity + '<p>')
+				$('#dayTwo').append('<p> wind: ' + data.list[1].speed + '<p>')
+
+			    
+			});
+			ajaxRequest.done(function(data){
+				$('#dayThree').append('<h3>' + data.city.name + '</h3>')
+				$('#dayThree').append('<h4>' + data.list[2].temp.max + "/" + data.list[2].temp.min + '</h4>'),
+				$('#dayThree').append('<img src="http://openweathermap.org/img/w/' + data.list[2].weather[0].icon + '.png">')
+				$('#dayThree').append('<p> conditions: ' + data.list[2].weather[0].description + '<p>')
+				$('#dayThree').append('<p> humidity: ' + data.list[2].humidity + '<p>')
+				$('#dayThree').append('<p> wind: ' + data.list[2].speed + '<p>')
+			});
+
+
+
+		};
+			updateWeather();
+			
+			$('#btn-reload').click(function(){
+					updateWeather();
+				});
+
+
+
+</script>
+
+
+</body>
+
+</html
