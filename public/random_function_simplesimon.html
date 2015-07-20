@@ -1,0 +1,17 @@
+function getRandomBox(){
+		var boxes = $('.box');
+		var rand = Math.floor(Math.random() * 4);
+		var buttonToAnimate = boxes[rand].getAttribute('id');
+		var id = buttonToAnimate.getAttribute('id');
+		simonSequence.push(id);
+	}
+	
+
+	function playSimonSequence() {
+		for (var i=0; i < playSimonSequence.length; i++) {
+			$('#' + simonSequence[i]).addClass('active');
+			setTimeout(function(){
+				$('#' + simonSequence[i]).removeClass('active');
+			},1000);
+			}
+		}
