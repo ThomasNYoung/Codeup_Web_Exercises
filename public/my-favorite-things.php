@@ -1,6 +1,19 @@
 <?php
 
-$favoriteThings = ['cars', 'bars', 'guitars', '50 cent nachos', 'hot chicken wings', 'beer', 'bacon'];
+
+function pageController()
+{
+    // Initialize an empty data array.
+    $data = [];
+
+    // Add data to be used in the html view.
+    
+		$data['favoriteThings'] = ['cars', 'bars', 'guitars', '50 cent nachos', 'hot chicken wings', 'beer', 'bacon'];
+
+    // Return the completed data array.
+    return $data;    
+}
+extract(pageController());
 
 ?>
 <!DOCTYPE html>
@@ -14,9 +27,9 @@ $favoriteThings = ['cars', 'bars', 'guitars', '50 cent nachos', 'hot chicken win
    <table class = "table-striped container">
    	
    		
-    	<?php foreach ($favoriteThings as $favoriteThing) { ?>
-        	<tr><td><?php echo $favoriteThing ?></td></tr>
-    	<?php } ?>
+    	<? foreach ($favoriteThings as $favoriteThing):?>
+        	<tr><td><?= $favoriteThing; ?></td></tr>
+    	<? endforeach; ?>
     	
     
     </table> 
