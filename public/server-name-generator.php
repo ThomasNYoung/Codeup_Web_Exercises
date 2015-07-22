@@ -11,7 +11,7 @@ function generator($array){
 	return($array[$randomNumber]);
  }
 
-function pageController()
+function pageController($adjective, $noun)
 {
     // Initialize an empty data array.
     $data = [];
@@ -24,7 +24,7 @@ function pageController()
     // Return the completed data array.
     return $data;    
 }
-		extract(pageController());
+		extract(pageController($adjective, $noun));
 ?>
 
 <!DOCTYPE html>
