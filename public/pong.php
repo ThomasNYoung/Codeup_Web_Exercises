@@ -23,7 +23,7 @@
 <body>
 	<h1>this is the score: <?= $counter;?></h1>
 		
-    	<a href="ping.php?counter=<?= $counter ?>&direction=hit"> hit!</a>
+    	<a href="ping.php?counter=<?= $counter ?>&direction=hit"> hit it!</a>
     	<a href="?counter=<?= $counter ?>&direction=miss">miss!</a>
 	
 </body>
