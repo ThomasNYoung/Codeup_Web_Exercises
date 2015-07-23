@@ -11,7 +11,7 @@ $url = "https://duckduckgo.com/?q={$query}";
 	<title>searchin</title>
 </head>
 <body>
-	 <form method="GET" >
+	 <form method="POST" >
         <label>search?</label>
         <input type="text" name="<? $query; ?>" placeholder = "searches" action= "<? $query; ?>"><br>
         <input type="submit">
