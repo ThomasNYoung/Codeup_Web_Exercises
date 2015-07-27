@@ -24,12 +24,16 @@ $person1->lastName = 'carl'
 $person2-> new Person();
 
 $person2->firstName = 'wild';
-$person2->lastName = ='bill';
+$person2->lastName  ='bill';
 
 $person3-> new Person();
 
 $person3->firstName = 'yes';
-$person3->lastName = ='man';
+$person3->lastName ='man';
+
+$glacier = new Cohort();
+
+$glacier->name = 'glacier'
 
 var_dump($person1);
 

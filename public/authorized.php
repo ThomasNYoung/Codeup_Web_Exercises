@@ -1,13 +1,16 @@
 <?php
+
 session_start();
+require_once '../Auth.php';
 
 $username = "";
-if($_SESSION['LOGGED_IN_USER'] != true){
+if(Auth::check()){
+	$username = $_SESSION['username'];
+} else{ 
 	header('Location: login.php');
 	exit();
-} else{ 
-	$username = $_SESSION['username'];
 }
+Auth::user();
 ?>
 <!DOCTYPE html>
 <html>
@@ -18,7 +21,7 @@ if($_SESSION['LOGGED_IN_USER'] != true){
 </head>
 <body>
 	<div class="container">
-	    <h2>authorized</h2>
+	    <h2>you are authorized</h2>
 	    <h2>welcome <?= $username; ?></h2>
 	    
 	    <a href="login.php">Back</a><br>

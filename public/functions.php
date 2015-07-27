@@ -2,7 +2,7 @@
 session_start();
 
 var_dump($_REQUEST);
-$key = date('Y-m-d');
+
 function inputHas($key){
 	if(isset($_REQUEST[$key])){
 		return true;
@@ -18,6 +18,7 @@ function inputGet($key){
 		return null;
 	}
 }
+
 function escape($input){
 	return htmlspecialchars(strip_tags($input));
 }

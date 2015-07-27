@@ -1,34 +1,19 @@
 <?php
 // var_dump($_POST);
 session_start();
-
-	
-if($_SESSION['LOGGED_IN_USER'] == true){
+require_once '../Auth.php';
+if(Auth::check()){
 	header('Location: authorized.php');
 	exit();
-}else {
-	$_SESSION['LOGGED_IN_USER'] = false;
 }
-
-
-
-function pageController(){
+if(Input::has('username') && Input::has('password')){
+	$username = trim(Input::get('username'));
+	$userPass = trim(Input::get('password'));
+	Auth::attempt($username, $userPass);	
+}
 	
-	$data['username'] = isset($_POST['username']) ? $_POST['username'] : '';
-	$data['password'] = isset($_POST['password']) ? $_POST['password'] : '';
-	if($data['username'] == '' && $data['password'] == ''){
-		
-	} elseif ($data['username'] == 'guest' && $data ['password'] == 'password'){
-		$_SESSION['username'] = 'guest';
-		$_SESSION['LOGGED_IN_USER'] = true;
-		header('Location: authorized.php');
-		exit();
-	} elseif($data['username'] != 'guest' || $data['password'] != 'password'){
-		echo 'login failed';
-	}else{
-		echo 'login failed';
-	}
-} pageController();	
+
+
 ?>
 
 <!DOCTYPE html>
@@ -50,3 +35,5 @@ function pageController(){
 </div>
 </body>
 </html>
+	
+	

@@ -1,13 +1,13 @@
 <?php
 	// var_dump($_GET);
+ 	require_once '../Input.php';
  	
- 	
- 		if(isset($_GET['counter'])){
+ 		if(Input::has('counter')){
  			$counter = $_GET['counter'];
- 			if(!empty($_GET)){
- 				if($_GET['direction'] == 'hit'){
+ 			if(Input::has('direction')){
+ 				if(Input::get('direction') == 'hit'){
  					$counter +=1;
- 				} else if($_GET['direction'] == 'miss'){
+ 				} else if(Input::has('direction') == 'miss'){
 	 				$counter = 'game over!';
 	 			}
 	 		}
