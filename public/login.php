@@ -2,18 +2,17 @@
 // var_dump($_POST);
 session_start();
 require_once '../Auth.php';
+
 if(Auth::check()){
 	header('Location: authorized.php');
 	exit();
 }
+
 if(Input::has('username') && Input::has('password')){
 	$username = trim(Input::get('username'));
 	$userPass = trim(Input::get('password'));
 	Auth::attempt($username, $userPass);	
 }
-	
-
-
 ?>
 
 <!DOCTYPE html>
@@ -35,5 +34,8 @@ if(Input::has('username') && Input::has('password')){
 </div>
 </body>
 </html>
+	
+
+
 	
 	
