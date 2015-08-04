@@ -12,6 +12,7 @@ $add = "CREATE TABLE national_parks(
     location VARCHAR(240) NOT NULL,
     date_established DATE NOT NULL,
     area_in_acres DOUBLE,
+    description TEXT NOT NULL,
     PRIMARY KEY(id)
     );";
 $dbc->exec($add);

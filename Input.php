@@ -10,7 +10,7 @@ class Input
      */
     public static function has($key)
     {
-        if(isset($_REQUEST[$key])){
+        if(!empty($_REQUEST[$key])){
             return true;
         }else{
             return false;
@@ -27,13 +27,16 @@ class Input
      */
     public static function get($key, $default = null)
     {
-        if (isset($_REQUEST[$key])) {
-            return $_REQUEST[$key];
+        if (!empty($_REQUEST[$key])) {
+            return self::escape($_REQUEST[$key]);
         }else{
             return $default;
         }
     }   // TODO: Fill in this function
 
+    public static function escape($input){
+        return htmlspecialchars(strip_tags($input));
+    }
 
     ///////////////////////////////////////////////////////////////////////////
     //                      DO NOT EDIT ANYTHING BELOW!!                     //
